@@ -19,7 +19,7 @@
 <section id="next-steps">
   <div id="social">
     <div class="keyboard-shortcuts">
-    <p><kbd>⌘</kbd> + <kbd>/</kbd> - open keyboard shortcuts</p>
+      <p><kbd>⌘</kbd> + <kbd>/</kbd> - open keyboard shortcuts</p>
       <p><kbd>⌘</kbd> + <kbd>K</kbd> - open the search bar</p>
       <p><kbd>⌘</kbd> + <kbd>N</kbd> - create a new note</p>
       <p><kbd>⌘</kbd> + <kbd>S</kbd> - save the current note</p>
