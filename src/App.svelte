@@ -8,10 +8,7 @@
 
 <section id="center">
   <div class="hero">
-    <img src={heroSvg} class="hero-svg" alt="Svelte logo" />
-  </div>
-  <div>
-    <h1>Workpad</h1>
+    <div class="title"><img src={heroSvg} class="hero-svg" alt="Svelte logo" /><h1>Workpad</h1></div>
     <p>Your private notes, snippets, and more, saved locally</p>
   </div>
   <Features />
@@ -20,69 +17,29 @@
 <div class="ticks"></div>
 
 <section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#documentation-icon"></use>
-    </svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank" rel="noreferrer">
-          <img class="logo" src={viteLogo} alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://svelte.dev/" target="_blank" rel="noreferrer">
-          <img class="button-icon" src={svelteLogo} alt="" />
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
   <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#social-icon"></use>
-    </svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li>
-        <a href="https://github.com/vitejs/vite" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#github-icon"></use>
-          </svg>
-          GitHub
-        </a>
-      </li>
-      <li>
-        <a href="https://chat.vite.dev/" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#discord-icon"></use>
-          </svg>
-          Discord
-        </a>
-      </li>
-      <li>
-        <a href="https://x.com/vite_js" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#x-icon"></use>
-          </svg>
-          X.com
-        </a>
-      </li>
-      <li>
-        <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#bluesky-icon"></use>
-          </svg>
-          Bluesky
-        </a>
-      </li>
-    </ul>
+    <div class="keyboard-shortcuts">
+    <p><kbd>⌘</kbd> + <kbd>/</kbd> - open keyboard shortcuts</p>
+      <p><kbd>⌘</kbd> + <kbd>K</kbd> - open the search bar</p>
+      <p><kbd>⌘</kbd> + <kbd>N</kbd> - create a new note</p>
+      <p><kbd>⌘</kbd> + <kbd>S</kbd> - save the current note</p>
+    </div>
   </div>
 </section>
 
 <div class="ticks"></div>
 <section id="spacer"></section>
+
+<section class="footer">
+  <a href="https://x.com/j0_dev" target="_blank" rel="noreferrer">
+    X
+  </a>
+  <span>•</span>
+  <a href="https://github.com/j0dev/workpad" target="_blank" rel="noreferrer">
+    GitHub
+  </a>
+  <span>•</span>
+  <a href="https://j0dev.com/" target="_blank" rel="noreferrer">
+    By Jayesh Vyavahare
+  </a>
+</section>
