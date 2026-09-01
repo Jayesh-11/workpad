@@ -312,3 +312,10 @@ kbd {
   justify-content: center;
   gap: 8px;
 }
+
+.about-dialog {
+  border-radius: 8px;
+  border: 1px solid #000;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
