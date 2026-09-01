@@ -1,12 +1,14 @@
 <script>
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from './assets/vite.svg'
+  import heroSvg from './assets/hero.svg'
   import heroImg from './assets/hero.png'
   import Features from './lib/Features.svelte'
 </script>
 
 <section id="center">
   <div class="hero">
+    <img src={heroSvg} class="hero-svg" alt="Svelte logo" />
   </div>
   <div>
     <h1>Workpad</h1>
