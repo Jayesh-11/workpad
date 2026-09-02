@@ -319,3 +319,13 @@ kbd {
   background: var(--bg);
   box-shadow: var(--shadow);
 }
+
+.about-dialog-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}

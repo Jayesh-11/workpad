@@ -27,5 +27,8 @@
       </div>
     </div>
   </section>
-  <button commandfor="about-dialog" command="close">Close</button>
+
+  <section class="about-dialog-footer">
+    <p><kbd>Esc</kbd> - Close the dialog</p>
+  </section>
 </dialog>

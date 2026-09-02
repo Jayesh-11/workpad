@@ -1,6 +1,15 @@
 <script>
   import About from "./about/About.svelte";
+  import { workpadDB } from "./db/db.svelte";
 </script>
+
+{#if workpadDB.db === null && workpadDB.error === null}
+  <p>Loading...</p>
+{:else if workpadDB.db === null && workpadDB.error !== null}
+  <p>{workpadDB.error}</p>
+{:else}
+  <p>Database ready</p>
+{/if}
 
 <About />
 
