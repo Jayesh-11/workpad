@@ -1,6 +1,14 @@
 <script>
   import About from "./about/About.svelte";
   import { workpadDB } from "./db/db.svelte";
+  import transactions from "./db/transactions.svelte";
+
+  document.addEventListener("keydown", (e) => {
+    if (e.metaKey && e.key === "k") {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
 </script>
 
 {#if workpadDB.db === null && workpadDB.error === null}
@@ -12,6 +20,15 @@
 {/if}
 
 <About />
+
+<button
+  onclick={() =>
+    transactions.createSnippet({
+      name: "Test",
+      description: "Test description",
+      isFavorite: false,
+    })}>Create Snippet</button
+>
 
 <section id="center"></section>
 

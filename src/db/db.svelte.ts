@@ -3,7 +3,7 @@ export enum ERROR_CODES {
   UNABLE_TO_OPEN_DATABASE = "Unable to open database",
 }
 
-const STORES = {
+export const STORES = {
   SNIPPETS: "snippets",
 };
 
