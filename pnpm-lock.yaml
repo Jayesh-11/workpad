@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@tanstack/svelte-form':
+        specifier: ^1.33.5
+        version: 1.33.5(svelte@5.57.0)
       nanoid:
         specifier: ^6.0.1
         version: 6.0.1
@@ -169,6 +172,31 @@ packages:
     peerDependencies:
       svelte: ^5.46.4
       vite: ^8.0.0-beta.7 || ^8.0.0
+
+  '@tanstack/devtools-event-client@0.4.4':
+    resolution: {integrity: sha512-6T5Yop/793YI+H+5J8Hsyj4kCih9sl4t3ElLgKioW5hk3ocn+ZdSJ94tT7vL7uabxSugWYBZlOTMPzEw2puvQw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  '@tanstack/form-core@1.33.5':
+    resolution: {integrity: sha512-3dfx9MBP0aq5sXKteikG629X9oviptrQj0IFRk9YGcb+lB7Kv5x8S17oOSk1wUWgjQZ4xVJEMbKwOAODymocgA==}
+
+  '@tanstack/pacer-lite@0.1.1':
+    resolution: {integrity: sha512-y/xtNPNt/YeyoVxE/JCx+T7yjEzpezmbb+toK8DDD1P4m7Kzs5YR956+7OKexG3f8aXgC3rLZl7b1V+yNUSy5w==}
+    engines: {node: '>=18'}
+
+  '@tanstack/store@0.11.1':
+    resolution: {integrity: sha512-mzTOBhypOuDJAy/D8n2MfUZ1HFkXnmSETviRyhqEC8LUE7/IZQExOTxMANj3KjTofYTkFNpBY67qaVrT41YccA==}
+
+  '@tanstack/svelte-form@1.33.5':
+    resolution: {integrity: sha512-GGlLocQwc4f15EoslfSKSiFwGy1Wz8CPTl6LXcykg4XUEGOmgs8Dg4/RjNyHeN/qrbIMemWuwzbt2wXBq50eXg==}
+    peerDependencies:
+      svelte: ^5.0.0
+
+  '@tanstack/svelte-store@0.12.1':
+    resolution: {integrity: sha512-ZFj8gyIWHZRYLv8RHp5jhnMhvw15g86KinotrUp9RfY7ygjkU3CcaMUytIdMJ4Xzq/9GqVlAphV9gFIGKRXWSw==}
+    peerDependencies:
+      svelte: ^5.0.0
 
   '@tsconfig/svelte@5.0.8':
     resolution: {integrity: sha512-UkNnw1/oFEfecR8ypyHIQuWYdkPvHiwcQ78sh+ymIiYoF+uc5H1UBetbjyqT+vgGJ3qQN6nhucJviX6HesWtKQ==}
@@ -530,6 +558,29 @@ snapshots:
       svelte: 5.57.0
       vite: 8.2.2(@types/node@24.13.3)
       vitefu: 1.1.3(vite@8.2.2(@types/node@24.13.3))
+
+  '@tanstack/devtools-event-client@0.4.4': {}
+
+  '@tanstack/form-core@1.33.5':
+    dependencies:
+      '@tanstack/devtools-event-client': 0.4.4
+      '@tanstack/pacer-lite': 0.1.1
+      '@tanstack/store': 0.11.1
+
+  '@tanstack/pacer-lite@0.1.1': {}
+
+  '@tanstack/store@0.11.1': {}
+
+  '@tanstack/svelte-form@1.33.5(svelte@5.57.0)':
+    dependencies:
+      '@tanstack/form-core': 1.33.5
+      '@tanstack/svelte-store': 0.12.1(svelte@5.57.0)
+      svelte: 5.57.0
+
+  '@tanstack/svelte-store@0.12.1(svelte@5.57.0)':
+    dependencies:
+      '@tanstack/store': 0.11.1
+      svelte: 5.57.0
 
   '@tsconfig/svelte@5.0.8': {}
 
