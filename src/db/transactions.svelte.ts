@@ -2,13 +2,11 @@ import { nanoid } from "nanoid";
 import { STORES as indexStore, workpadDB } from "./db.svelte";
 
 const createSnippet = ({
-  name,
-  description,
-  isFavorite,
+  data,
+  isFavorite = false,
 }: {
-  name: string;
-  description: string;
-  isFavorite: boolean;
+  data: string;
+  isFavorite?: boolean;
 }) => {
   if (!workpadDB.db) {
     // toast error, althought we won't we showing this to user
@@ -24,8 +22,7 @@ const createSnippet = ({
   const snippetObjectStore = transaction.objectStore(indexStore.SNIPPETS);
   const snippet = {
     id: nanoid(),
-    name,
-    description,
+    data,
     isFavorite,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),

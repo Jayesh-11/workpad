@@ -8,10 +8,6 @@ export const STORES = {
 };
 
 const SNIPPETS_STORE_INDEXES = {
-  name: {
-    indexName: "name_idx",
-    keyPath: "name",
-  },
   // for assets (images, videos, etc.)
   // data: {
   //   indexName: "data_idx",
@@ -62,10 +58,6 @@ const initializeSnippetsStore = (db: IDBDatabase) => {
     keyPath: "id",
   });
   snippetsStore.createIndex(
-    SNIPPETS_STORE_INDEXES.name.indexName,
-    SNIPPETS_STORE_INDEXES.name.keyPath,
-  );
-  snippetsStore.createIndex(
     SNIPPETS_STORE_INDEXES.isFavorite.indexName,
     SNIPPETS_STORE_INDEXES.isFavorite.keyPath,
   );
@@ -109,7 +101,6 @@ class WorkpadDB {
           // version mismatch
 
           snippetsStore = createStoreIfNotExists(db, STORES.SNIPPETS);
-          createIndexIfNotExists(snippetsStore, SNIPPETS_STORE_INDEXES.name);
           createIndexIfNotExists(
             snippetsStore,
             SNIPPETS_STORE_INDEXES.isFavorite,

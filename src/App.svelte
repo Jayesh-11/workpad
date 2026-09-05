@@ -1,29 +1,10 @@
 <script>
   import About from "./about/About.svelte";
   import CreateSnippet from "./createSnippet/CreateSnippet.svelte";
-  import { workpadDB } from "./db/db.svelte";
-  import transactions from "./db/transactions.svelte";
 </script>
 
-{#if workpadDB.db === null && workpadDB.error === null}
-  <p>Loading...</p>
-{:else if workpadDB.db === null && workpadDB.error !== null}
-  <p>{workpadDB.error}</p>
-{:else}
-  <p>Database ready</p>
-{/if}
-
 <About />
-
 <CreateSnippet />
-<button
-  onclick={() =>
-    transactions.createSnippet({
-      name: "Test",
-      description: "Test description",
-      isFavorite: false,
-    })}>Create Snippet</button
->
 
 <section id="center"></section>
 

@@ -5,6 +5,7 @@
   import FieldInfo from "./FieldInfo.svelte";
   import Tiptap from "../tiptap/Tiptap.svelte";
   import "./createSnippet.css";
+  import transactions from "../db/transactions.svelte";
 
   let dialog: HTMLDialogElement;
   document.addEventListener("keydown", (e) => {
@@ -18,12 +19,14 @@
 
   const form = createForm(() => ({
     defaultValues: {
-      name: "",
       data: "",
       isFavorite: false,
     },
     onSubmit: async ({ value }) => {
-      alert(JSON.stringify(value));
+      transactions.createSnippet({
+        data: value.data,
+        isFavorite: value.isFavorite,
+      });
     },
   }));
 </script>
@@ -46,37 +49,6 @@
         form.handleSubmit();
       }}
     >
-      <form.Field
-        name="name"
-        validators={{
-          onChange: ({ value }) =>
-            value.length < 3 ? "Not long enough" : undefined,
-          onChangeAsyncDebounceMs: 5000,
-          onChangeAsync: async ({ value }) => {
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-            return (
-              value.includes("error") && 'No "error" allowed in first name'
-            );
-          },
-        }}
-      >
-        {#snippet children(field)}
-          <div>
-            <input
-              id={field.name}
-              type="text"
-              placeholder="Call it something"
-              value={field.state.value}
-              onblur={() => field.handleBlur()}
-              oninput={(e: Event) => {
-                const target = e.target as HTMLInputElement;
-                field.handleChange(target.value);
-              }}
-            />
-            <FieldInfo {field} />
-          </div>
-        {/snippet}
-      </form.Field>
       <form.Field
         name="data"
         validators={{
