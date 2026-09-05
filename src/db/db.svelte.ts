@@ -12,10 +12,6 @@ const SNIPPETS_STORE_INDEXES = {
     indexName: "name_idx",
     keyPath: "name",
   },
-  description: {
-    indexName: "description_idx",
-    keyPath: "description",
-  },
   // for assets (images, videos, etc.)
   // data: {
   //   indexName: "data_idx",
@@ -70,10 +66,6 @@ const initializeSnippetsStore = (db: IDBDatabase) => {
     SNIPPETS_STORE_INDEXES.name.keyPath,
   );
   snippetsStore.createIndex(
-    SNIPPETS_STORE_INDEXES.description.indexName,
-    SNIPPETS_STORE_INDEXES.description.keyPath,
-  );
-  snippetsStore.createIndex(
     SNIPPETS_STORE_INDEXES.isFavorite.indexName,
     SNIPPETS_STORE_INDEXES.isFavorite.keyPath,
   );
@@ -118,10 +110,6 @@ class WorkpadDB {
 
           snippetsStore = createStoreIfNotExists(db, STORES.SNIPPETS);
           createIndexIfNotExists(snippetsStore, SNIPPETS_STORE_INDEXES.name);
-          createIndexIfNotExists(
-            snippetsStore,
-            SNIPPETS_STORE_INDEXES.description,
-          );
           createIndexIfNotExists(
             snippetsStore,
             SNIPPETS_STORE_INDEXES.isFavorite,

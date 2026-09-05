@@ -20,6 +20,10 @@
   },
   "dependencies": {
     "@tanstack/svelte-form": "^1.33.5",
+    "@tiptap/core": "^3.31.3",
+    "@tiptap/extension-bubble-menu": "^3.31.3",
+    "@tiptap/pm": "^3.31.3",
+    "@tiptap/starter-kit": "^3.31.3",
     "nanoid": "^6.0.1"
   }
 }

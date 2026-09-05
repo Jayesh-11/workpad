@@ -3,6 +3,7 @@
   import { CREATE_SNIPPET_KEY } from "../consts/constants";
   import { createForm } from "@tanstack/svelte-form";
   import FieldInfo from "./FieldInfo.svelte";
+  import Tiptap from "../tiptap/Tiptap.svelte";
 
   let dialog: HTMLDialogElement;
   document.addEventListener("keydown", (e) => {
@@ -17,7 +18,7 @@
   const form = createForm(() => ({
     defaultValues: {
       name: "",
-      description: "",
+      data: "",
       isFavorite: false,
     },
     onSubmit: async ({ value }) => {
@@ -50,7 +51,7 @@
         validators={{
           onChange: ({ value }) =>
             value.length < 3 ? "Not long enough" : undefined,
-          onChangeAsyncDebounceMs: 500,
+          onChangeAsyncDebounceMs: 5000,
           onChangeAsync: async ({ value }) => {
             await new Promise((resolve) => setTimeout(resolve, 1000));
             return (
@@ -61,11 +62,10 @@
       >
         {#snippet children(field)}
           <div>
-            <label for={field.name}>First Name</label>
             <input
               id={field.name}
               type="text"
-              placeholder="First Name"
+              placeholder="Call it something"
               value={field.state.value}
               onblur={() => field.handleBlur()}
               oninput={(e: Event) => {
@@ -78,7 +78,7 @@
         {/snippet}
       </form.Field>
       <form.Field
-        name="description"
+        name="data"
         validators={{
           onChange: ({ value }) =>
             value.length < 3 ? "Not long enough" : undefined,
@@ -86,18 +86,18 @@
       >
         {#snippet children(field)}
           <div>
-            <label for={field.name}>Last Name</label>
-            <input
+            <textarea
               id={field.name}
-              type="text"
-              placeholder="Last Name"
+              placeholder="Write anything"
               value={field.state.value}
               onblur={() => field.handleBlur()}
               oninput={(e: Event) => {
                 const target = e.target as HTMLInputElement;
                 field.handleChange(target.value);
               }}
-            />
+            ></textarea>
+
+            <Tiptap />
             <FieldInfo {field} />
           </div>
         {/snippet}
@@ -116,7 +116,7 @@
           </div>
           {#if field.state.value}
             <form.Field
-              name="description"
+              name="data"
               validators={{
                 onChange: ({ value }) =>
                   value.length === 0
@@ -126,7 +126,7 @@
             >
               {#snippet children(field)}
                 <div>
-                  <label for={field.name}>Job Title</label>
+                  <label for={field.name}>Data</label>
                   <input
                     type="text"
                     id={field.name}
