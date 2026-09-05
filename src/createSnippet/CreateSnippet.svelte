@@ -4,6 +4,7 @@
   import { createForm } from "@tanstack/svelte-form";
   import FieldInfo from "./FieldInfo.svelte";
   import Tiptap from "../tiptap/Tiptap.svelte";
+  import "./createSnippet.css";
 
   let dialog: HTMLDialogElement;
   document.addEventListener("keydown", (e) => {
@@ -22,7 +23,6 @@
       isFavorite: false,
     },
     onSubmit: async ({ value }) => {
-      // Do something with form data
       alert(JSON.stringify(value));
     },
   }));
@@ -86,18 +86,7 @@
       >
         {#snippet children(field)}
           <div>
-            <textarea
-              id={field.name}
-              placeholder="Write anything"
-              value={field.state.value}
-              onblur={() => field.handleBlur()}
-              oninput={(e: Event) => {
-                const target = e.target as HTMLInputElement;
-                field.handleChange(target.value);
-              }}
-            ></textarea>
-
-            <Tiptap />
+            <Tiptap {field} />
             <FieldInfo {field} />
           </div>
         {/snippet}
@@ -105,44 +94,19 @@
       <form.Field name="isFavorite">
         {#snippet children(field)}
           <div>
-            <label for={field.name}>Employed?</label>
+            <label for={field.name}>Favorite</label>
             <input
-              oninput={() => field.handleChange(!field.state.value)}
+              type="checkbox"
+              id={field.name}
               checked={field.state.value}
               onblur={() => field.handleBlur()}
-              id={field.name}
-              type="checkbox"
-            />
-          </div>
-          {#if field.state.value}
-            <form.Field
-              name="data"
-              validators={{
-                onChange: ({ value }) =>
-                  value.length === 0
-                    ? "If you have a job, you need a title"
-                    : null,
+              oninput={(e: Event) => {
+                const target = e.target as HTMLInputElement;
+                field.handleChange(target.checked);
               }}
-            >
-              {#snippet children(field)}
-                <div>
-                  <label for={field.name}>Data</label>
-                  <input
-                    type="text"
-                    id={field.name}
-                    placeholder="Job Title"
-                    value={field.state.value}
-                    onblur={field.handleBlur}
-                    oninput={(e: Event) => {
-                      const target = e.target as HTMLInputElement;
-                      field.handleChange(target.value);
-                    }}
-                  />
-                  <FieldInfo {field} />
-                </div>
-              {/snippet}
-            </form.Field>
-          {/if}
+            />
+            <FieldInfo {field} />
+          </div>
         {/snippet}
       </form.Field>
       <div>

@@ -3,6 +3,9 @@
   import { Editor } from "@tiptap/core";
   import { StarterKit } from "@tiptap/starter-kit";
   import BubbleMenu from "@tiptap/extension-bubble-menu";
+  import type { AnyFieldApi } from "@tanstack/svelte-form";
+
+  let { field }: { field: AnyFieldApi } = $props();
 
   let bubbleMenu = $state();
   let element = $state();
@@ -17,10 +20,13 @@
           element: bubbleMenu,
         }),
       ],
-      content: ``,
+      content: field.state.value,
       onTransaction: ({ editor }) => {
         // Update the state signal to force a re-render
         editorState = { editor };
+      },
+      onUpdate: ({ editor }) => {
+        field.handleChange(editor.getJSON());
       },
     });
   });
@@ -29,38 +35,4 @@
   });
 </script>
 
-<div style="position: relative" class="app">
-  {#if editorState.editor}
-    <div class="fixed-menu">
-      <button
-        onclick={() =>
-          editorState.editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        class:active={editorState.editor.isActive("heading", { level: 1 })}
-      >
-        H1
-      </button>
-      <button
-        onclick={() =>
-          editorState.editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        class:active={editorState.editor.isActive("heading", { level: 2 })}
-      >
-        H2
-      </button>
-      <button
-        onclick={() => editorState.editor.chain().focus().setParagraph().run()}
-        class:active={editorState.editor.isActive("paragraph")}
-      >
-        P
-      </button>
-    </div>
-  {/if}
-
-  <div bind:this={element}></div>
-</div>
-
-<style>
-  button.active {
-    background: black;
-    color: white;
-  }
-</style>
+<div bind:this={element}></div>
