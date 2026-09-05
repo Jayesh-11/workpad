@@ -37,4 +37,14 @@ const createSnippet = ({
   };
 };
 
-export default { createSnippet };
+const getSnippets = () => {
+  if (!workpadDB.db) {
+    return;
+  }
+  const transaction = workpadDB.db.transaction(indexStore.SNIPPETS, "readonly");
+  const snippetObjectStore = transaction.objectStore(indexStore.SNIPPETS);
+  const request = snippetObjectStore.getAll();
+  return request;
+};
+
+export default { createSnippet, getSnippets };

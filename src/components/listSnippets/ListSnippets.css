@@ -1,0 +1,14 @@
+.list-snippets {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 850px;
+}
+
+.snippet-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+  width: 300px;
+}

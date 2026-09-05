@@ -1,10 +1,18 @@
 <script>
   import About from "./about/About.svelte";
-  import CreateSnippet from "./createSnippet/CreateSnippet.svelte";
+  import CreateSnippet from "./components/createSnippet/CreateSnippet.svelte";
+  import ListSnippets from "./components/listSnippets/ListSnippets.svelte";
+  import { workpadDB } from "./db/db.svelte";
 </script>
 
-<About />
+{#if workpadDB?.db}
+  <ListSnippets />
+{:else}
+  <p>Loading!!</p>
+{/if}
+
 <CreateSnippet />
+<About />
 
 <section id="center"></section>
 

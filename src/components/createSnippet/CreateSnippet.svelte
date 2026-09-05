@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { workpadDB } from "../db/db.svelte";
-  import { CREATE_SNIPPET_KEY } from "../consts/constants";
+  import { workpadDB } from "../../db/db.svelte";
+  import { CREATE_SNIPPET_KEY } from "../../consts/constants";
   import { createForm } from "@tanstack/svelte-form";
   import FieldInfo from "./FieldInfo.svelte";
-  import Tiptap from "../tiptap/Tiptap.svelte";
-  import "./createSnippet.css";
-  import transactions from "../db/transactions.svelte";
+  import Tiptap from "../../tiptap/Tiptap.svelte";
+  import transactions from "../../db/transactions.svelte";
+  import "./CreateSnippet.css";
 
   let dialog: HTMLDialogElement;
   document.addEventListener("keydown", (e) => {
@@ -27,6 +27,8 @@
         data: value.data,
         isFavorite: value.isFavorite,
       });
+      form.reset();
+      dialog.close();
     },
   }));
 </script>
