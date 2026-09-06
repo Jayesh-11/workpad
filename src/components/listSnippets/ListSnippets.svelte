@@ -1,15 +1,10 @@
 <script lang="ts">
   import transactions from "../../db/transactions.svelte";
   import { generateText, generateHTML } from "@tiptap/core";
-  import Document from "@tiptap/extension-document";
-  import Text from "@tiptap/extension-text";
-  import Paragraph from "@tiptap/extension-paragraph";
-  import HardBreak from "@tiptap/extension-hard-break";
-  import Heading from "@tiptap/extension-heading";
-  import HorizontalRule from "@tiptap/extension-horizontal-rule";
-  import { ListItem, BulletList, OrderedList } from "@tiptap/extension-list";
   import "./ListSnippets.css";
   import MiniSearch from "minisearch";
+  import { StarterKit } from "@tiptap/starter-kit";
+
   const miniSearch = new MiniSearch({
     fields: ["id", "data"],
     storeFields: ["id", "rawData"],
@@ -28,32 +23,9 @@
         snippets = rawSnippetsTransaction.result.map((snippet) => {
           return {
             ...snippet,
-            rawData: generateHTML(snippet.data, [
-              Document,
-              Text,
-              Paragraph,
-              HardBreak,
-              Heading.configure({
-                levels: [1, 2, 3],
-              }),
-              HorizontalRule,
-              ListItem,
-              BulletList,
-              OrderedList,
-            ]),
-            data: generateText(snippet.data, [
-              Document,
-              Text,
-              Paragraph,
-              HardBreak,
-              Heading.configure({
-                levels: [1, 2, 3],
-              }),
-              HorizontalRule,
-              ListItem,
-              BulletList,
-              OrderedList,
-            ]),
+            rawData: generateHTML(snippet.data, [StarterKit]),
+
+            data: generateText(snippet.data, [StarterKit]),
           };
         });
         miniSearch.addAll(snippets);

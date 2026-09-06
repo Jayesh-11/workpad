@@ -6,29 +6,30 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "size": "pnpm run build && size-limit",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
+    "@size-limit/file": "^13.0.3",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^24.13.3",
+    "size-limit": "^13.0.3",
     "svelte": "^5.56.10",
     "svelte-check": "^4.7.6",
     "typescript": "~6.0.2",
     "vite": "^8.2.2"
   },
+  "size-limit": [
+    {
+      "limit": "150kb",
+      "path": "dist/assets/*.js"
+    }
+  ],
   "dependencies": {
     "@tanstack/svelte-form": "^1.33.5",
     "@tiptap/core": "^3.31.3",
-    "@tiptap/extension-bubble-menu": "^3.31.3",
-    "@tiptap/extension-document": "^3.31.3",
-    "@tiptap/extension-hard-break": "^3.31.3",
-    "@tiptap/extension-heading": "^3.31.3",
-    "@tiptap/extension-horizontal-rule": "^3.31.3",
-    "@tiptap/extension-list": "^3.31.3",
-    "@tiptap/extension-paragraph": "^3.31.3",
-    "@tiptap/extension-text": "^3.31.3",
     "@tiptap/pm": "^3.31.3",
     "@tiptap/starter-kit": "^3.31.3",
     "minisearch": "^7.2.0",
