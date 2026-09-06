@@ -4,26 +4,43 @@
   import { StarterKit } from "@tiptap/starter-kit";
   import BubbleMenu from "@tiptap/extension-bubble-menu";
   import type { AnyFieldApi } from "@tanstack/svelte-form";
+  import Document from "@tiptap/extension-document";
+  import Text from "@tiptap/extension-text";
+  import Paragraph from "@tiptap/extension-paragraph";
+  import HardBreak from "@tiptap/extension-hard-break";
+  import Heading from "@tiptap/extension-heading";
+  import HorizontalRule from "@tiptap/extension-horizontal-rule";
+  import { ListItem, BulletList, OrderedList } from "@tiptap/extension-list";
 
   let { field }: { field: AnyFieldApi } = $props();
 
   let bubbleMenu = $state();
-  let element = $state();
-  let editorState = $state({ editor: null });
+  let element: HTMLElement | null = null;
+  let editor: Editor | null = null;
 
   onMount(() => {
-    editorState.editor = new Editor({
-      element: element,
+    if (!element) return;
+    editor = new Editor({
+      element,
       extensions: [
         StarterKit,
         BubbleMenu.configure({
           element: bubbleMenu,
         }),
+        Document,
+        Text,
+        Paragraph,
+        HardBreak,
+        Heading,
+        HorizontalRule,
+        ListItem,
+        BulletList,
+        OrderedList,
       ],
       content: field.state.value,
       onTransaction: ({ editor }) => {
         // Update the state signal to force a re-render
-        editorState = { editor };
+        editor = editor;
       },
       onUpdate: ({ editor }) => {
         field.handleChange(editor.getJSON());
@@ -31,7 +48,7 @@
     });
   });
   onDestroy(() => {
-    editorState.editor?.destroy();
+    editor?.destroy();
   });
 </script>
 
